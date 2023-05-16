@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.wolvesdev.cmarasdvr'
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.wolvesdev.cmarasdvr"
+        minSdk 31
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi-v7a'
+            exclude 'x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.leanback:leanback:1.0.0'
+    //noinspection GradleDynamicVersion
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'org.videolan.android:libvlc-all:3.6.0-eap7'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+}
+
